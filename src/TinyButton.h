@@ -26,6 +26,8 @@
 
 #include "Arduino.h"
 
+//#define MULTIEND
+
 #define DEBOUNCEMS   10
 #define CLICKMS     200
 #define PRESSMS     800
@@ -58,12 +60,6 @@ public:
    * @param newFunction This function will be called when the event has been detected.
    */
   void attachClick(callbackFunction newFunction);
-
-  /**
-   * Attach an event to be called after a multi click is detected.
-   * @param newFunction This function will be called when the event has been detected.
-   */
-  void attachMultiClick(callbackFunction newFunction);
 
   /**
    * Attach an event to fire when the button is pressed and held down.
@@ -132,10 +128,6 @@ private:
   // These variables will hold functions acting as event source.
   callbackFunction _clickFunc = NULL;
 
-  callbackFunction _doubleClickFunc = NULL;
-
-  callbackFunction _multiClickFunc = NULL;
-
   callbackFunction _longPressStartFunc = NULL;
 
   callbackFunction _longPressStopFunc = NULL;
@@ -161,7 +153,6 @@ private:
    *  Advance to a new state and save the last one to come back in cas of bouncing detection.
    */
   void _newState(stateMachine_t nextState);
-  void _newTimedState(stateMachine_t nextState);
   
   stateMachine_t _state = OCS_INIT;
   stateMachine_t _lastState = OCS_INIT; // used for debouncing

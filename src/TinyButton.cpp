@@ -65,13 +65,6 @@ void TinyButton::attachClick(callbackFunction newFunction)
 } // attachClick
 
 
-// save function for multiClick event
-void TinyButton::attachMultiClick(callbackFunction newFunction)
-{
-  _multiClickFunc = newFunction;
-} // attachMultiClick
-
-
 // save function for longPressStart event
 void TinyButton::attachLongPressStart(callbackFunction newFunction)
 {
@@ -173,14 +166,7 @@ void TinyButton::tick(bool isPressed)
       // count as a short button down
       _newState(TinyButton::OCS_COUNT);
       _nClicks++;
-      if (_nClicks == 1 || (!_multiClickFunc) ) {
-        // 1st click or no multi click is registered.
-        if (_clickFunc) _clickFunc();
-
-      } else {
-        // this was a multi click sequence.
-        _multiClickFunc();
-      } // if
+      if (_clickFunc) _clickFunc();
 
     } // if
     break;
@@ -196,7 +182,6 @@ void TinyButton::tick(bool isPressed)
     } else if ((waitTime > CLICKMS) ) {
       _newState(TinyButton::OCS_INIT);
       //_nClicks=0; save few bytes for TinyCore/MicroCore
-        
     } // if
     break;
 
