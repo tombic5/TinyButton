@@ -5,7 +5,7 @@ OneButton https://github.com/mathertel/OneButton Library simplified and optimize
 * no doubleclick callback (but multiclick still works)
 * no dynamic parameters, only compile time parameters
 * simplified and optimized FSM function
-* 21 Bytes of RAM per Button (2 buttons possible in tiny 13)
+* 19 Bytes of RAM per Button (2 buttons possible in tiny 13)
 
 Total size of compiled library is about 600-800 Bytes, so it fits into tiny13 with some useful callback functions.
 
