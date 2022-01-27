@@ -1,5 +1,5 @@
 
-#TinyButton Library
+# TinyButton Library
 
 OneButton https://github.com/mathertel/OneButton Library simplified and optimized to fit in tiny13 AVR uC with MicroCore package.
 
